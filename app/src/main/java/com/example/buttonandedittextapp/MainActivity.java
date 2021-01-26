@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textViewNumber;
     private Button buttonNumber;
     private EditText editTextNumber;
+    private int doubleNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 editTextNumber.setError("you must write something!");
                 textViewNumber.setText("");
             } else {
-                textViewNumber.setText(editTextNumber.getText().toString());
+                doubleNum = Integer.parseInt(editTextNumber.getText().toString()) * Integer.parseInt(editTextNumber.getText().toString());
+                textViewNumber.setText(String.valueOf(doubleNum));
             }
         }
     }
