@@ -1,18 +1,18 @@
 package com.example.buttonandedittextapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText etNumber;
-    private Button btnEnter;
-    private TextView tvNumber;
+    private TextView textViewNumber;
+    private Button buttonNumber;
+    private EditText editTextNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,23 +24,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initUI() {
-        etNumber = findViewById(R.id.etNumber);
-        btnEnter = findViewById(R.id.btnEnter);
-        tvNumber = findViewById(R.id.tvNumber);
+        textViewNumber = findViewById(R.id.textViewNumber);
+        buttonNumber = findViewById(R.id.buttonNumber);
+        editTextNumber = findViewById(R.id.editTextNumber);
     }
 
     private void initListeners() {
-        btnEnter.setOnClickListener(this);
+        buttonNumber.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btnEnter) {
-            if (!etNumber.getText().toString().isEmpty()) {
-                tvNumber.setText(etNumber.getText().toString());
+        if (v.getId() == R.id.buttonNumber) {
+            if (editTextNumber.getText().toString().matches("")) {
+                editTextNumber.setError("you must write something!");
+                textViewNumber.setText("");
             } else {
-                tvNumber.setText("");
-                etNumber.setError("The EditText is empty");
+                textViewNumber.setText(editTextNumber.getText().toString());
             }
         }
     }
